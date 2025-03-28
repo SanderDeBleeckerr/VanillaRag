@@ -1,6 +1,6 @@
-/wiki_data
+/wiki_data/*
 /graphs
-/data
+/data/*
 
 # Processed AI files
 *.gguf
