@@ -4,9 +4,10 @@ This project is a vanilla rag implementation using libraries without high resour
 
 ## Dependencies
 
-Poetry was used for both the virtual python environment and the dependencies
+Poetry was used for both the virtual python environment and the dependencies.
+
 For first use of poetry see: https://python-poetry.org/docs/
-Normally the poetry.lock should guarantee other users getting the same version of the dependencies.
+
 
 ### Installing deps
 
@@ -20,18 +21,20 @@ There are two types of data, currently only thuisartsnl data is completely imple
 
 The data should be contained in the /documents folder which is gitignored.
 But it can be filled with scraped data by running the script scrape_thuisartsnl_data.py locally.
-Afterwards the preprocessing can take place via preprocess_thuisdokter_vanilla.py.
-And the GUI for asking questions can be run via the command "streamlit run streamlit_chat.py"
+
+Afterwards the preprocessing can take place via preprocess_thuisdokter_vanilla.py. 
+
+GUI for asking questions can be run via the command "streamlit run streamlit_chat.py"
 
 ### Wikipedia Data
 The wiki_data folder is gitignored but should contain the extraction wikipedia dump on your pc.
 
-#### download
+#### Download
 https://en.wikipedia.org/wiki/Wikipedia:Database_download
 I used the torrent of the english version (24GB):
 https://meta.wikimedia.org/wiki/Data_dump_torrents#English_Wikipedia
 
-#### preparation
+#### Preparation
 Extraction takes in (60GB)
 
 You'd need the deadsnakes apt source for the older version of python
@@ -62,5 +65,5 @@ Pip setup on python 3.10 (or use requirements.txt if present in prj)
 Nohup as in no hold up, the process will run in background, I had 6 processors:
     nohup python -m wikiextractor.WikiExtractor ~/Downloads/enwiki-20250301-pages-articles-multistream.xml.bz2 --json -o wiki_data --processes  6 --bytes 500M & tail -f nohup.out
 
-#### non pip installs / installs with issues
+#### Non pip installs / installs with issues
 (tinyRag) python -m pip install sentence-transformers
