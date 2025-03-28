@@ -1,5 +1,17 @@
 # Readme
 
+## dependencies
+
+Poetry was used for both the virtual python environment and the dependencies
+For first use of poetry see: https://python-poetry.org/docs/
+Normally the poetry.lock should garantuee other users getting the same version of deps
+
+### Install deps
+Run poetry install
+
+## /documents
+this folder is gitignored but should contain the scraped data from
+thuisdokter.nl retrieved via scrape_thuisartsnl_data.py
 
 
 ## /wikidata
