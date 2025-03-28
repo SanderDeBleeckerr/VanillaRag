@@ -1,4 +1,10 @@
 /wiki_data
+/graphs
+/data
+
+# Processed AI files
+*.gguf
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
