@@ -66,4 +66,38 @@ def build_faiss_index():
 
     print(f"Indexed {len(documents)} documents.")
 
-# Run preprocessing
+def query_faiss_index(query, k=3):
+    """Query FAISS index and retrieve top k results."""
+    # Encode the query
+    query_embedding = embedder.encode([query], convert_to_numpy=True)
+
+    # Load the FAISS index
+    index = faiss.read_index(INDEX_PATH)
+
+    # Perform the search
+    distances, indices = index.search(query_embedding, k)
+
+    # Fetch the top k results from the documents
+    results = [(documents[i], distances[0][idx]) for idx, i in enumerate(indices[0])]
+    
+    return results
+
+# Start processing
+if __name__ == "__main__":
+    # multiprocessing.set_start_method("spawn", force=True)  # Set the 'spawn' start method
+    # traverse_and_process(root_dir)
+    # Define the single file you want to process
+    test_file_path = "./wiki_data/GR/wiki_01"  # Replace with the actual file path
+    
+    # Run process_file directly
+    process_file(test_file_path)
+    build_faiss_index()
+    
+    test_query = "What is Steam Deck?"
+    print(f"\nQuerying FAISS index with: '{test_query}'")
+    results = query_faiss_index(test_query)
+    
+    # Display the results
+    print("\nTop matching documents:")
+    for i, (doc, score) in enumerate(results):
+        print(f"\nDocument {i + 1} (Score: {score}):\n{doc[:500]}...")  # Print first 500 chars of document
