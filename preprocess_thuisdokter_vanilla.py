@@ -8,7 +8,7 @@ from tqdm import tqdm
 # Directory for documents
 DOCS_DIR = "./documents"
 INDEX_PATH = "./faiss_index_thuisdokter"
-DOCS_PATH = "./thuisdokter_documents.json"
+# DOCS_PATH = "./thuisdokter_documents.json"
 
 # Initialize Sentence-Transformer model for embeddings
 embedder = SentenceTransformer("all-MiniLM-L6-v2")
@@ -51,8 +51,8 @@ def build_faiss_index():
     faiss.write_index(index, INDEX_PATH)
 
     # Save the documents to a JSON file
-    with open(DOCS_PATH, "w", encoding="utf-8") as f:
-        json.dump(documents, f)
+    # with open(DOCS_PATH, "w", encoding="utf-8") as f:
+    #     json.dump(documents, f)
 
     print(f"Indexed {len(documents)} documents.")
 
